@@ -25,8 +25,8 @@ public class ButtonManager : MonoBehaviour {
         SceneManager.LoadScene("InfoScene");
     }
 
-    public void ExitApp()
+    public void LukkariLink()
     {
-        Application.Quit();
+        Application.OpenURL("https://lukkarit.hamk.fi/");
     }
 }
