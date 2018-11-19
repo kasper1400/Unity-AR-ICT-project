@@ -22,7 +22,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void Info()
     {
-        Debug.Log("Info button clicked");
+        SceneManager.LoadScene("InfoScene");
     }
 
     public void ExitApp()
