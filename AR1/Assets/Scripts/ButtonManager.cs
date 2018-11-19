@@ -27,6 +27,6 @@ public class ButtonManager : MonoBehaviour {
 
     public void ExitApp()
     {
-        Application.Quit();
+        Application.OpenURL("https://lukkarit.hamk.fi/");
     }
 }
