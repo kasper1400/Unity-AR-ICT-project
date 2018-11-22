@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -8,11 +9,13 @@ using UnityEngine.UI;
 public class GetData : MonoBehaviour {
 
     public string URL;
+
     public Text ID_text;
 
     // Use this for initialization
     void Start() {
         StartCoroutine(MakeRequest());
+        TimetableInfo olio = new TimetableInfo();
     }
 
     // Update is called once per frame
@@ -39,6 +42,7 @@ public class GetData : MonoBehaviour {
 
         var postData = System.Text.Encoding.UTF8.GetBytes(json);
         UnityWebRequest www = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
+
         byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(json);
         www.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
         www.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
@@ -52,14 +56,27 @@ public class GetData : MonoBehaviour {
             Debug.Log(www.error);
         }
         else
-        {
+        {            
             // Show results as text
-            Debug.Log(www.downloadHandler.text);
+            //Debug.Log(www.downloadHandler.text);
 
             // Or retrieve results as binary data
             byte[] results = www.downloadHandler.data;
+
+            // Make an object from json string
+            object timetableObject = JsonUtility.FromJson<TimetableInfo>(www.downloadHandler.text);
         }
     }
+    
+        [Serializable]
+        public class TimetableInfo
+        {
+            public string id;
+            public string subject;
+
+        }
+
+
 
     //IEnumerator GetDataFromServer(){
 
