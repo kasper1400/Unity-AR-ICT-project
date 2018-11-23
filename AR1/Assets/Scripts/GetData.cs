@@ -5,19 +5,20 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using Newtonsoft.Json.Linq;
 
 public class GetData : MonoBehaviour {
 
-    public string URL;
-
-    public Text ID_text;
+    public Text Subject;
+    public Text StartDate;
+    public Text EndDate;
+    string url = "https://opendata.hamk.fi:8443/r1/reservation/search";
 
     // Use this for initialization
     void Start() {
         StartCoroutine(MakeRequest());
-        TimetableInfo olio = new TimetableInfo();
-    }
-
+      }
+  
     // Update is called once per frame
     void Update() {
     }
@@ -32,73 +33,49 @@ public class GetData : MonoBehaviour {
 
     IEnumerator MakeRequest()
     {
+        // Used for GET request:
         //string url = "https://opendata.hamk.fi:8443/r1/reservation/building";
         //UnityWebRequest www = UnityWebRequest.Get(url);
 
+        // Using API key as username for authorization
         string authorization = Authenticate("ucSrzhL6ojWEXotgiOWM", "");
-        string url = "https://opendata.hamk.fi:8443/r1/reservation/search";
+ 
+        // Defining JSON query
         var timeNow = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm");
-        var json = "{'startDate':'"+ timeNow +"', 'endDate': '2018-11-26T00:00', 'room': ['Vi-C-222']}";
+        var json = "{'startDate':'"+ timeNow +"', 'endDate': '2018-11-28T00:00', 'room': ['Vi-C-222']}";
 
+        // Sending JSON query as POST method to web server and receiving response 
         var postData = System.Text.Encoding.UTF8.GetBytes(json);
         UnityWebRequest www = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
-
         byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(json);
         www.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
         www.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         www.SetRequestHeader("AUTHORIZATION", authorization);
-        //www.chunkedTransfer = false;
 
-        yield return www.Send();
+        yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
         }
         else
-        {            
-            // Show results as text
-            //Debug.Log(www.downloadHandler.text);
-
-            // Or retrieve results as binary data
-            byte[] results = www.downloadHandler.data;
-
-            // Make an object from json string
-            object timetableObject = JsonUtility.FromJson<TimetableInfo>(www.downloadHandler.text);
-        }
-    }
-    
-        [Serializable]
-        public class TimetableInfo
         {
-            public string id;
-            public string subject;
+            // Saving JSON values in a string
+            string jsonString = www.downloadHandler.text;
 
-        }
-
-
-
-    //IEnumerator GetDataFromServer(){
-
-    //    WWWForm formData = new WWWForm();
-    //    formData.AddField("userName", "ucSrzhL6ojWEXotgiOWM");
-
-    //    WWW www;
-    //    www = new WWW(URL);
-    //    yield return www;
-
-    //    string json = www.text;
-
-    //    if (www.isDone)
-    //    {
-    //        Building data = JsonUtility.FromJson<Building>(json);
-    //        ID_text.text = data.id;
-    //    }
-    //}
-
-    class Building
-    {
-        public string id;
-        public string type;
+            // Parsing JSON data and sending results to GUI Text elements
+            foreach (var acc in JObject.Parse(jsonString)["reservations"])
+            {
+                string subject = acc["subject"].ToString();
+                //subject = subject.Substring(0, 23);
+                Subject.GetComponent<Text>().text += subject + "\n" + "\n";
+            
+                string startdate = acc["startDate"].ToString();
+                StartDate.GetComponent<Text>().text +=  startdate + "\n" + "\n";
+            
+                string enddate = acc["endDate"].ToString();        
+                EndDate.GetComponent<Text>().text += enddate + "\n" + "\n";
+            }
+        } 
     }
 }
