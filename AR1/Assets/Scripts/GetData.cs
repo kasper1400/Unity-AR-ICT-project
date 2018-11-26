@@ -6,9 +6,12 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
+using System.Threading;
 
 public class GetData : MonoBehaviour {
 
+    public string Room;
     public Text Subject;
     public Text StartDate;
     public Text EndDate;
@@ -39,11 +42,15 @@ public class GetData : MonoBehaviour {
 
         // Using API key as username for authorization
         string authorization = Authenticate("ucSrzhL6ojWEXotgiOWM", "");
- 
-        // Defining JSON query
-        var timeNow = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm");
-        var json = "{'startDate':'"+ timeNow +"', 'endDate': '2018-11-28T00:00', 'room': ['Vi-C-222']}";
 
+        // Defining JSON query
+        CultureInfo ci = Thread.CurrentThread.CurrentCulture;
+        DayOfWeek fdow = ci.DateTimeFormat.FirstDayOfWeek;
+        DayOfWeek today = DateTime.Now.DayOfWeek;
+        DateTime FirstDayOfThisWeek = DateTime.Now.AddDays(-(today - fdow)).Date;
+        DateTime LastDayOfThisWeek = DateTime.Now.AddDays(-(today - fdow - 7)).Date;
+        var json = "{'startDate':'"+ FirstDayOfThisWeek.ToString("yyyy-MM-ddTHH:mm")+"', 'endDate': '"+LastDayOfThisWeek.ToString("yyyy-MM-ddTHH:mm")+"', 'room': ['"+ Room +"']}";
+        
         // Sending JSON query as POST method to web server and receiving response 
         var postData = System.Text.Encoding.UTF8.GetBytes(json);
         UnityWebRequest www = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
@@ -63,6 +70,8 @@ public class GetData : MonoBehaviour {
             // Saving JSON values in a string
             string jsonString = www.downloadHandler.text;
 
+            Debug.Log(jsonString);
+
             // Parsing JSON data and sending results to GUI Text elements
             foreach (var acc in JObject.Parse(jsonString)["reservations"])
             {
@@ -74,7 +83,7 @@ public class GetData : MonoBehaviour {
                 StartDate.GetComponent<Text>().text +=  startdate + "\n" + "\n";
             
                 string enddate = acc["endDate"].ToString();        
-                EndDate.GetComponent<Text>().text += enddate + "\n" + "\n";
+                EndDate.GetComponent<Text>().text += enddate + "\n" + "\n";         
             }
         } 
     }
