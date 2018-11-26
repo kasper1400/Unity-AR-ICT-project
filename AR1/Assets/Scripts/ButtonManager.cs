@@ -29,4 +29,8 @@ public class ButtonManager : MonoBehaviour {
     {
         Application.OpenURL("https://lukkarit.hamk.fi/");
     }
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
