@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ARController : MonoBehaviour {
 
+    public GameObject InfoPopup;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -18,5 +20,20 @@ public class ARController : MonoBehaviour {
     public void MenuButton()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void CloseButton()
+    {
+        InfoPopup.SetActive(false);
+    }
+
+    public void InfoButton()
+    {
+        InfoPopup.SetActive(true);
     }
 }
