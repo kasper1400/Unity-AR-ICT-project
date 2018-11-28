@@ -188,6 +188,7 @@ ModelImporter:
     7400032: TouchDown
     7400034: bike (1)
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Bike
     13700002: body
     2186277476908879412: ImportLogs
@@ -223,7 +224,7 @@ ModelImporter:
       name: Default Take
       takeName: Default Take
       firstFrame: 0
-      lastFrame: 249
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -739,10 +740,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
