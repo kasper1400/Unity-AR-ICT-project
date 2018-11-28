@@ -33,8 +33,12 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Menu");
     }
-    public void GoToYoutube()
+    public void GoToYoutubeBench()
     {
         Application.OpenURL(" https://www.youtube.com/watch?v=tpLfsh2QB28&t=59s");
+    }
+    public void GotoYoutubeBike()
+    {
+        Application.OpenURL("https://www.youtube.com/watch?v=Ovlm9wWTk7Y");
     }
 }
