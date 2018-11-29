@@ -41,4 +41,8 @@ public class ButtonManager : MonoBehaviour {
     {
         Application.OpenURL("https://www.youtube.com/watch?v=Ovlm9wWTk7Y");
     }
+    public void SendForm()
+    {
+        SceneManager.LoadScene("SendForm");
+    }
 }
