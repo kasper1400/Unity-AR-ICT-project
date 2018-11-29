@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour {
 
-    public Animation anim;
+    //public Animation anim;
+    public Animation animat;
+    public GameObject bench;
+    public GameObject bike;
 
     void Start()
     {
-        //gameObject.GetComponent<Animator>().Play("bike");
-        anim = GetComponent<Animation>();
-
+        // anim = GetComponent<Animation>();
+        // animat = GetComponent<Animation>();
     }
 
     // Update is called once per frame
     void Update () {
-        anim.Play("bike");
+        //animat.Play("bench");
+        bike.GetComponent<Animation>().Play("bike");
+        bench.GetComponent<Animation>().Play("bench");
+
+        //anim.Play("bike");
     }
 }
