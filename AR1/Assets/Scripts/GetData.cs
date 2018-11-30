@@ -23,10 +23,10 @@ public class GetData : MonoBehaviour {
     public Text Saturday;
     public Text Sunday;
     string url = "https://opendata.hamk.fi:8443/r1/reservation/search";
-    public bool IsNextWeekClicked;
-    public bool IsPreviousWeekClicked;
-    public int DayCounter;
-    public int WeekNumCounter;
+    private bool IsNextWeekClicked;
+    private bool IsPreviousWeekClicked;
+    private int DayCounter;
+    private int WeekNumCounter;
 
     // Use this for initialization
     void Start() {
@@ -140,66 +140,53 @@ public class GetData : MonoBehaviour {
 
             // Parsing JSON data and sending results to GUI Text elements
             foreach (var acc in JObject.Parse(jsonString)["reservations"])
-            {
+            { 
                 string sortingDate = acc["startDate"].ToString();
                 DateTime date = Convert.ToDateTime(sortingDate);
                 DayOfWeek Weekday = date.DayOfWeek;
+                string subject = acc["subject"].ToString();
 
-                if ("Monday" == Weekday.ToString())
-                {
-                    //subject = subject.Substring(0, 30);
-                    string subject = acc["subject"].ToString();
-                    string startdate = acc["startDate"].ToString();
-                    string enddate = acc["endDate"].ToString();
-                    Monday.GetComponent<Text>().text += subject + "\n" + startdate + "\n" + enddate + "\n" + "\n";
-                }
+                string Tmpstartdate = acc["startDate"].ToString();
+                DateTime TempStartDate = DateTime.Parse(Tmpstartdate);
+                string startdate = TempStartDate.ToString("dd.MM.yyyy H:mm");
 
-                if ("Tuesday" == Weekday.ToString())
-                {
-                    string subject = acc["subject"].ToString();
-                    string startdate = acc["startDate"].ToString();
-                    string enddate = acc["endDate"].ToString();
-                    Tuesday.GetComponent<Text>().text += subject + "\n" + startdate +"\n" + enddate + "\n" + "\n";
-                }
+                string TmpEndDate = acc["endDate"].ToString();
+                DateTime TempEndDate = DateTime.Parse(TmpEndDate);
+                string enddate = TempEndDate.ToString("HH:mm");
 
-                if ("Wednesday" == Weekday.ToString())
-                {
-                    string subject = acc["subject"].ToString();
-                    string startdate = acc["startDate"].ToString();
-                    string enddate = acc["endDate"].ToString();
-                    Wednesday.GetComponent<Text>().text += subject + "\n" + startdate + "\n" + enddate + "\n" + "\n";
-                }
+                string GroupCode = (string)acc.SelectToken("resources[1].code");
 
-                if ("Thursday" == Weekday.ToString())
-                {
-                    string subject = acc["subject"].ToString();
-                    string startdate = acc["startDate"].ToString();
-                    string enddate = acc["endDate"].ToString();
-                    Thursday.GetComponent<Text>().text += subject + "\n" + startdate + "\n" + enddate + "\n" + "\n";
-                }
+                string[] WeekDays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
-                if ("Friday" == Weekday.ToString())
+                for (int i = 0; i < WeekDays.Length; i++)
                 {
-                    string subject = acc["subject"].ToString();
-                    string startdate = acc["startDate"].ToString();
-                    string enddate = acc["endDate"].ToString();
-                    Friday.GetComponent<Text>().text += subject + "\n" + startdate + "\n" + enddate + "\n" + "\n";
-                }
-
-                if ("Saturday" == Weekday.ToString())
-                {
-                    string subject = acc["subject"].ToString();
-                    string startdate = acc["startDate"].ToString();
-                    string enddate = acc["endDate"].ToString();
-                    Saturday.GetComponent<Text>().text += subject + "\n" + startdate + "\n" + enddate + "\n" + "\n";
-                }
-
-                if ("Sunday" == Weekday.ToString())
-                {
-                    string subject = acc["subject"].ToString();
-                    string startdate = acc["startDate"].ToString();
-                    string enddate = acc["endDate"].ToString();
-                    Sunday.GetComponent<Text>().text += subject + "\n" + startdate + "\n" + enddate + "\n" + "\n";
+                    if (WeekDays[i] == Weekday.ToString())
+                    {
+                        switch (Weekday.ToString())
+                        {
+                            case "Monday":
+                                Monday.GetComponent<Text>().text += subject + "\n" + startdate + " - " + enddate + "\n" + GroupCode + "\n" + "\n";
+                                break;
+                            case "Tuesday":
+                                Tuesday.GetComponent<Text>().text += subject + "\n" + startdate + " - " + enddate + "\n" + GroupCode + "\n" + "\n";
+                                break;
+                            case "Wednesday":
+                                Wednesday.GetComponent<Text>().text += subject + "\n" + startdate + " - " + enddate + "\n" + GroupCode + "\n" + "\n";
+                                break;
+                            case "Thursday":
+                                Thursday.GetComponent<Text>().text += subject + "\n" + startdate + " - " + enddate + "\n" + GroupCode + "\n" + "\n";
+                                break;
+                            case "Friday":
+                                Friday.GetComponent<Text>().text += subject + "\n" + startdate + " - " + enddate + "\n" + GroupCode + "\n" + "\n";
+                                break;
+                            case "Saturday":
+                                Saturday.GetComponent<Text>().text += subject + "\n" + startdate + " - " + enddate + "\n" + GroupCode + "\n" + "\n";
+                                break;
+                            case "Sunday":
+                                Sunday.GetComponent<Text>().text += subject + "\n" + startdate + " - " + enddate + "\n" + GroupCode + "\n" + "\n";
+                                break;
+                        }
+                    }
                 }
             }
         }
