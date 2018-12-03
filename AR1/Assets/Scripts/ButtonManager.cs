@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
-
+    
 	// Use this for initialization
 	void Start () {
 		
@@ -45,4 +45,5 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("SendForm");
     }
+   
 }
