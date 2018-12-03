@@ -8,6 +8,8 @@ Confidential and Proprietary - Protected under copyright and other laws.
 
 using UnityEngine;
 using Vuforia;
+using UnityEngine.Video;
+[RequireComponent(typeof(VideoPlayer))]
 
 /// <summary>
 /// A custom handler that implements the ITrackableEventHandler interface.
@@ -21,6 +23,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     protected TrackableBehaviour mTrackableBehaviour;
 
+    private VideoPlayer videoPlayer;
+
     #endregion // PROTECTED_MEMBER_VARIABLES
 
     #region UNITY_MONOBEHAVIOUR_METHODS
@@ -30,6 +34,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
+
+        GameObject video = GameObject.Find("Video_plane");
+        videoPlayer = video.GetComponent<VideoPlayer>();
+        videoPlayer.Play();
+        videoPlayer.Pause();
     }
 
     protected virtual void OnDestroy()
@@ -54,14 +63,19 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
+            Debug.Log("Play");
+            
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
             OnTrackingFound();
+            videoPlayer.Play();
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+            Debug.Log("Stop!");
             OnTrackingLost();
+            videoPlayer.Pause();
         }
         else
         {
