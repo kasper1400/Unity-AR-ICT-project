@@ -36,7 +36,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
 
         GameObject video = GameObject.Find("Video_plane");
-        videoPlayer = video.GetComponent<VideoPlayer>();
+        //videoPlayer = video.GetComponent<VideoPlayer>();
         videoPlayer.Play();
         videoPlayer.Pause();
     }
