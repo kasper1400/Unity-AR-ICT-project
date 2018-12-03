@@ -8,8 +8,10 @@ Confidential and Proprietary - Protected under copyright and other laws.
 
 using UnityEngine;
 using Vuforia;
+using UnityEngine.Audio;
 using UnityEngine.Video;
 [RequireComponent(typeof(VideoPlayer))]
+[RequireComponent(typeof(AudioSource))]
 
 /// <summary>
 /// A custom handler that implements the ITrackableEventHandler interface.
@@ -17,13 +19,14 @@ using UnityEngine.Video;
 /// Changes made to this file could be overwritten when upgrading the Vuforia version. 
 /// When implementing custom event handler behavior, consider inheriting from this class instead.
 /// </summary>
-public class ForVideoDefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
+public class CustomDefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
 {
     #region PROTECTED_MEMBER_VARIABLES
 
     protected TrackableBehaviour mTrackableBehaviour;
 
     private VideoPlayer videoPlayer;
+    private AudioSource audioPlayer;
 
     #endregion // PROTECTED_MEMBER_VARIABLES
 
@@ -39,6 +42,10 @@ public class ForVideoDefaultTrackableEventHandler : MonoBehaviour, ITrackableEve
         videoPlayer = video.GetComponent<VideoPlayer>();
         videoPlayer.Play();
         videoPlayer.Pause();
+
+        audioPlayer = video.GetComponent<AudioSource>();
+        audioPlayer.Play();
+        audioPlayer.Pause();
     }
 
     protected virtual void OnDestroy()
@@ -63,20 +70,28 @@ public class ForVideoDefaultTrackableEventHandler : MonoBehaviour, ITrackableEve
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
-            Debug.Log("Play");
-
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
             OnTrackingFound();
+
+            Debug.Log("Play");
             videoPlayer.Play();
+            audioPlayer.Play();
+
+            //Assign the Audio from Video to AudioSource to be played
+            // <-- We have added this line. It tells video player that you will have one audio track playing in Unity AudioSource.
+            //videoPlayer.EnableAudioTrack(0, true);
+            //videoPlayer.SetTargetAudioSource(0, AudioSource);
 
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
-            Debug.Log("Stop!");
             OnTrackingLost();
+
+            Debug.Log("Stop!");
             videoPlayer.Pause();
+            audioPlayer.Pause();
         }
         else
         {
