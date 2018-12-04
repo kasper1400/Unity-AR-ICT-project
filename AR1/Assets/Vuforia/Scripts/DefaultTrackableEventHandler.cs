@@ -25,8 +25,8 @@ public class CustomDefaultTrackableEventHandler : MonoBehaviour, ITrackableEvent
 
     protected TrackableBehaviour mTrackableBehaviour;
 
-    private VideoPlayer videoPlayer;
-    private AudioSource audioPlayer;
+    public VideoPlayer videoPlayer;
+    public AudioSource audioPlayer;
 
     #endregion // PROTECTED_MEMBER_VARIABLES
 
@@ -72,7 +72,10 @@ public class CustomDefaultTrackableEventHandler : MonoBehaviour, ITrackableEvent
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
             OnTrackingFound();
-
+            if (mTrackableBehaviour.TrackableName == "3")
+            {
+                Debug.Log("HELLLOP");
+            }
             Debug.Log("Play");
             videoPlayer.Play();
             audioPlayer.Play();
