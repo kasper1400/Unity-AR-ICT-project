@@ -19,12 +19,7 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene(scene);
     }
-
-    public void Info()
-    {
-        SceneManager.LoadScene("InfoScene");
-    }
-
+ 
     public void LukkariLink()
     {
         Application.OpenURL("https://lukkarit.hamk.fi/");

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -545,6 +545,10 @@ Prefab:
     - target: {fileID: 463198, guid: 09e7a03ee0d20479e99edf9335c3380d, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -94.324
+      objectReference: {fileID: 0}
+    - target: {fileID: 163198, guid: 09e7a03ee0d20479e99edf9335c3380d, type: 2}
+      propertyPath: m_Name
+      value: Bubbles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09e7a03ee0d20479e99edf9335c3380d, type: 2}
