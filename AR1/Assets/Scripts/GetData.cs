@@ -9,11 +9,12 @@ using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.Threading;
 using System.Linq;
+using Vuforia;
 
-
-public class GetData : MonoBehaviour {
-
-    public string Room;
+//public class GetData : DefaultTrackableEventHandler {
+public class GetData : MonoBehaviour
+{
+    public string Room; 
     public Text Title;
     public Text Monday;
     public Text Tuesday;
@@ -33,10 +34,6 @@ public class GetData : MonoBehaviour {
         IsPreviousWeekClicked = false;
         IsNextWeekClicked = false;
         StartCoroutine(MakeRequest());
-    }
-
-    // Update is called once per frame
-    void Update() {
     }
 
     public void PreviousWeekbtn_Clicked(){

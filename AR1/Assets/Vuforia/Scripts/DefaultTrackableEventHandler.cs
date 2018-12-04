@@ -8,10 +8,6 @@ Confidential and Proprietary - Protected under copyright and other laws.
 
 using UnityEngine;
 using Vuforia;
-using UnityEngine.Audio;
-using UnityEngine.Video;
-[RequireComponent(typeof(VideoPlayer))]
-[RequireComponent(typeof(AudioSource))]
 
 /// <summary>
 /// A custom handler that implements the ITrackableEventHandler interface.
@@ -25,8 +21,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     protected TrackableBehaviour mTrackableBehaviour;
 
-    public VideoPlayer videoPlayer;
-    public AudioSource audioPlayer;
+    //public string SendClassRoomToGetData;
 
     #endregion // PROTECTED_MEMBER_VARIABLES
 
@@ -37,16 +32,18 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
-
-        GameObject video = GameObject.Find("Video_Plane");
-        videoPlayer = video.GetComponent<VideoPlayer>();
-        videoPlayer.Play();
-        videoPlayer.Pause();
-
-        audioPlayer = video.GetComponent<AudioSource>();
-        audioPlayer.Play();
-        audioPlayer.Pause();
     }
+ 
+    //protected void IfImageFound()
+    // OR these should be in Update()
+    //{
+    //    if (mTrackableBehaviour.TrackableName == "3")
+    //    {
+    //        Debug.Log("Imagetarget 3 found!");
+    //        SendClassRoomToGetData = "Vi-C-222";
+    //        // SendClassRoomToGetData = "Vi-C-222";
+    //    }
+    //}
 
     protected virtual void OnDestroy()
     {
@@ -72,29 +69,13 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
             OnTrackingFound();
-            if (mTrackableBehaviour.TrackableName == "3")
-            {
-                Debug.Log("HELLLOP");
-            }
-            Debug.Log("Play");
-            videoPlayer.Play();
-            audioPlayer.Play();
-
-            //Assign the Audio from Video to AudioSource to be played
-            // <-- We have added this line. It tells video player that you will have one audio track playing in Unity AudioSource.
-            //videoPlayer.EnableAudioTrack(0, true);
-            //videoPlayer.SetTargetAudioSource(0, AudioSource);
-
+            //IfImageFound();
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
             OnTrackingLost();
-
-            Debug.Log("Stop!");
-            videoPlayer.Pause();
-            audioPlayer.Pause();
         }
         else
         {
@@ -110,7 +91,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     #region PROTECTED_METHODS
 
     protected virtual void OnTrackingFound()
-    {
+    {       
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
@@ -126,6 +107,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         // Enable canvas':
         foreach (var component in canvasComponents)
             component.enabled = true;
+
     }
 
 
