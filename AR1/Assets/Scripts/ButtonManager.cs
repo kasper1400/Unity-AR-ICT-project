@@ -40,5 +40,9 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("SendForm");
     }
+    public void TicTacToe()
+    {
+        SceneManager.LoadScene("TicTacToeMain");
+    }
    
 }
