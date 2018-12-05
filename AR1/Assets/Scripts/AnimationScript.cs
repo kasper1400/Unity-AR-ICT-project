@@ -10,54 +10,59 @@ public class AnimationScript : MonoBehaviour {
     public GameObject bench;
     public GameObject bike;
     public GameObject text1;
+    public GameObject BikeText;
     public bool IsTextActive;
+    public GameObject lookleft;
 
 
     void Start()
     {
-      
-        bike.SetActive(false);
-        bench.SetActive(false);
-        //IsTextActive = true;
-        // anim = GetComponent<Animation>();
-        // animat = GetComponent<Animation>();
-        // bench.SetActive(false);
-
+        lookleft.SetActive(false);
+        //bike.SetActive(true);
+        //bench.SetActive(false);
+        IsTextActive = true;
     }
 
     // Update is called once per frame
     void Update () {
-        //animat.Play("bench");
         bike.GetComponent<Animation>().Play("bike");
         bench.GetComponent<Animation>().Play("bench");
-
-        //anim.Play("bike");
     }
+
     public void ShowBike()
     {
-        bike.SetActive(true);
-
-    }
-    public void ShowBench()
-    {
-        //bench.SetActive(!bench.activeSelf);
+        bike.SetActive(!bike.activeSelf);
 
         if (IsTextActive == true)
         {
+            text1.GetComponent<Text>().text = "Learn from Character";
+            lookleft.SetActive(false);
+            IsTextActive = false;
+        }
 
+        else if (IsTextActive == false)
+        {
+            text1.GetComponent<Text>().text = "Hide Character";
+            lookleft.SetActive(true);
+            IsTextActive = true;
 
-            bench.SetActive(false);
+        }
 
+    }
+
+    public void ShowBench()
+    {
+        bench.SetActive(!bench.activeSelf);
+
+        if (IsTextActive == true)
+        {
             text1.GetComponent<Text>().text = "Learn from Character";
             IsTextActive = false;
         }
 
         else if (IsTextActive == false)
         {
-            bench.SetActive(true);
-
             text1.GetComponent<Text>().text = "Hide Character";
-
             IsTextActive = true;
 
         }
