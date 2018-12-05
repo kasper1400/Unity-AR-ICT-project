@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: bf22c250aec55684c8ee1c4d0877c0ba
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/TicTacToeMain.unity
     guid: 7c7d091321b5330478d91fd47e073dc7
+  - enabled: 1
+    path: Assets/Scenes/SendForm.unity
+    guid: 91d1279d7897b9d46a856db978846640
   m_configObjects: {}

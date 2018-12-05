@@ -11,16 +11,20 @@ public class AnimationScript : MonoBehaviour {
     public GameObject bike;
     public GameObject text1;
     public GameObject BikeText;
-    public bool IsTextActive;
-    public GameObject lookleft;
-
+    public bool IsTextActiveBike;
+    public bool IsTextActiveBench;
+    public GameObject lookleftbench;
+    public GameObject lookleftbike;
 
     void Start()
     {
-        lookleft.SetActive(false);
+        lookleftbench.SetActive(false);
+        lookleftbike.SetActive(false);
         //bike.SetActive(true);
         //bench.SetActive(false);
-        IsTextActive = true;
+        IsTextActiveBench = true;
+        IsTextActiveBike = true;
+
     }
 
     // Update is called once per frame
@@ -33,18 +37,18 @@ public class AnimationScript : MonoBehaviour {
     {
         bike.SetActive(!bike.activeSelf);
 
-        if (IsTextActive == true)
+        if (IsTextActiveBike == true)
         {
             text1.GetComponent<Text>().text = "Learn from Character";
-            lookleft.SetActive(false);
-            IsTextActive = false;
+            lookleftbike.SetActive(false);
+            IsTextActiveBike = false;
         }
 
-        else if (IsTextActive == false)
+        else if (IsTextActiveBike == false)
         {
             text1.GetComponent<Text>().text = "Hide Character";
-            lookleft.SetActive(true);
-            IsTextActive = true;
+            lookleftbike.SetActive(true);
+            IsTextActiveBike = true;
 
         }
 
@@ -54,16 +58,18 @@ public class AnimationScript : MonoBehaviour {
     {
         bench.SetActive(!bench.activeSelf);
 
-        if (IsTextActive == true)
+        if (IsTextActiveBench == true)
         {
             text1.GetComponent<Text>().text = "Learn from Character";
-            IsTextActive = false;
+            lookleftbench.SetActive(false);
+            IsTextActiveBench = false;
         }
 
-        else if (IsTextActive == false)
+        else if (IsTextActiveBench == false)
         {
             text1.GetComponent<Text>().text = "Hide Character";
-            IsTextActive = true;
+            lookleftbench.SetActive(true);
+            IsTextActiveBench = true;
 
         }
     }
