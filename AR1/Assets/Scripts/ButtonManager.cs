@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
-    
-	// Use this for initialization
-	void Start () {
+
+    public GameObject InfoPopup;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -15,9 +17,9 @@ public class ButtonManager : MonoBehaviour {
 		
 	}
 
-    public void ARScene(string scene)
+    public void ARScene()
     {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene("AR");
     }
  
     public void LukkariLink()
@@ -27,6 +29,10 @@ public class ButtonManager : MonoBehaviour {
     public void GoToMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+    public void GoToNPCAssistant()
+    {
+        SceneManager.LoadScene("Ground");
     }
     public void GoToYoutubeBench()
     {
@@ -44,5 +50,20 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("TicTacToeMain");
     }
-   
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void CloseButton()
+    {
+        InfoPopup.SetActive(false);
+    }
+
+    public void InfoButton()
+    {
+        InfoPopup.SetActive(true);
+    }
+
 }
