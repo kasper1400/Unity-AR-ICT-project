@@ -9,23 +9,26 @@ public class AnimationScript : MonoBehaviour {
     public Animation animat;
     public GameObject bench;
     public GameObject bike;
-    public GameObject text1;
+    public GameObject BenchText;
     public GameObject BikeText;
     public bool IsTextActiveBike;
     public bool IsTextActiveBench;
     public GameObject lookleftbench;
     public GameObject lookleftbike;
 
+    
     void Start()
     {
-        lookleftbench.SetActive(false);
-        lookleftbike.SetActive(false);
+        //lookleftbench.SetActive(false);
+       // lookleftbike.SetActive(false);
         //bike.SetActive(true);
         //bench.SetActive(false);
         IsTextActiveBench = true;
         IsTextActiveBike = true;
+       
 
     }
+   
 
     // Update is called once per frame
     void Update () {
@@ -39,14 +42,14 @@ public class AnimationScript : MonoBehaviour {
 
         if (IsTextActiveBike == true)
         {
-            text1.GetComponent<Text>().text = "Learn from Character";
+            BikeText.GetComponent<Text>().text = "Learn from Character";
             lookleftbike.SetActive(false);
             IsTextActiveBike = false;
         }
 
         else if (IsTextActiveBike == false)
         {
-            text1.GetComponent<Text>().text = "Hide Character";
+            BikeText.GetComponent<Text>().text = "Hide Character";
             lookleftbike.SetActive(true);
             IsTextActiveBike = true;
 
@@ -60,14 +63,14 @@ public class AnimationScript : MonoBehaviour {
 
         if (IsTextActiveBench == true)
         {
-            text1.GetComponent<Text>().text = "Learn from Character";
+            BenchText.GetComponent<Text>().text = "Learn from Character";
             lookleftbench.SetActive(false);
             IsTextActiveBench = false;
         }
 
         else if (IsTextActiveBench == false)
         {
-            text1.GetComponent<Text>().text = "Hide Character";
+            BenchText.GetComponent<Text>().text = "Hide Character";
             lookleftbench.SetActive(true);
             IsTextActiveBench = true;
 
