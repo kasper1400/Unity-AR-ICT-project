@@ -31,25 +31,6 @@ public class ControlCharacter : MonoBehaviour {
         this.GetComponent<Animation>()["walking"].wrapMode = WrapMode.Loop;
     }
 
-    //public void NPCAssistantButton()
-    //{
-    //    if (IsAssistantActive == true)
-    //    {
-    //        NPCAssistant.SetActive(false);
-    //        Debug.Log("Assistant disabled");
-    //        IsAssistantActive = false;
-    //    }
-
-    //    else if (IsAssistantActive == false)
-    //    {
-    //        Debug.Log("Assistant enabled");
-    //        NPCAssistant.SetActive(true);
-    //        NPCAssistant.transform.position = new Vector3(0.0f, -1.75f, 0.0f);
-    //        character.transform.position = new Vector3(0.0f, -1.75f, 7.00f);
-    //        IsAssistantActive = true;
-    //    }
-    //}
-
     // Update is called once per frame
     void Update () {
 
