@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour {
+public class ControlCharacter : MonoBehaviour {
 
     public GameObject NPCAssistant;
     public GameObject character;
@@ -26,28 +26,9 @@ public class CharacterController : MonoBehaviour {
         //NPCAssistant.SetActive(false);
 
         // Playing walking animation
-        character.GetComponent<Animation>().Play("Def_Armature|walking");
+        character.GetComponent<Animation>().Play("walking");
         // Looping animation
-        this.GetComponent<Animation>()["Def_Armature|walking"].wrapMode = WrapMode.Loop;
-    }
-
-    public void NPCAssistantButton()
-    {
-        if (IsAssistantActive == true)
-        {
-            NPCAssistant.SetActive(false);
-            Debug.Log("Assistant disabled");
-            IsAssistantActive = false;
-        }
-
-        else if (IsAssistantActive == false)
-        {
-            Debug.Log("Assistant enabled");
-            NPCAssistant.SetActive(true);
-            NPCAssistant.transform.position = new Vector3(0.0f, -1.75f, 0.0f);
-            character.transform.position = new Vector3(0.0f, -1.75f, 7.00f);
-            IsAssistantActive = true;
-        }
+        this.GetComponent<Animation>()["walking"].wrapMode = WrapMode.Loop;
     }
 
     // Update is called once per frame
@@ -73,7 +54,7 @@ public class CharacterController : MonoBehaviour {
 
             //character.GetComponent<Animation>().Stop();
             //character.GetComponent<Animation>().Play("handmove");
-            character.GetComponent<Animation>().Play("Def_Armature|Jump");
+            character.GetComponent<Animation>().Play("handmove");
         }
 
     }

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SendForm.unity
     guid: 91d1279d7897b9d46a856db978846640
+  - enabled: 1
+    path: Assets/Scenes/Ground.unity
+    guid: a5001309f1cf8ea4faef639d8b04cb49
   m_configObjects: {}
