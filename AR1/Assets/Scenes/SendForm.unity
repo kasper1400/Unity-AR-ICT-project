@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: -1826476478, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWorldCenterMode: 1
+  mWorldCenterMode: 3
   mWorldCenter: {fileID: 0}
 --- !u!81 &344384454
 AudioListener:
@@ -1148,11 +1148,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 064c2e64e18f1f54a86e98ec0636791a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 331
+      value: 1039
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 064c2e64e18f1f54a86e98ec0636791a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 609.9738
+      value: 610
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 064c2e64e18f1f54a86e98ec0636791a, type: 3}
       propertyPath: m_LocalRotation.x

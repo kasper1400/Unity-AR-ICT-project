@@ -7,7 +7,7 @@ public class SendMessageToMe : MonoBehaviour {
 
     public void EnterSomeText(string usermessage)
     {
-        WWWForm = new WWWForm();
+    //    WWWForm = new WWWForm();
 
     }
 
