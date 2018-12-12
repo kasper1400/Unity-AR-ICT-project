@@ -287,6 +287,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0000007
   m_Center: {x: 0.054306, y: 0.20857956, z: 0}
+--- !u!114 &188496705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 188496703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52db84a51f933844aaacc6d42bacc0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 50
 --- !u!1 &344384451
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +326,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 344384451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -2132876208, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
+  m_Script: {fileID: 11500000, guid: c47f92041efbb4b429a4eafca855ebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &344384453
@@ -760,6 +772,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0000002
   m_Center: {x: 0.054306, y: 0.20858006, z: 0}
+--- !u!114 &871604651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 871604645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52db84a51f933844aaacc6d42bacc0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 50
 --- !u!1 &1186423478
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1023,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0000002
   m_Center: {x: 0.054306, y: 0.20858006, z: 0}
+--- !u!114 &1509725297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1509725295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52db84a51f933844aaacc6d42bacc0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 50
 --- !u!1 &1580365696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1171,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0000007
   m_Center: {x: 0.054306, y: 0.20858456, z: 0}
+--- !u!114 &1876241900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1876241898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52db84a51f933844aaacc6d42bacc0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 50
 --- !u!1001 &1994002980
 Prefab:
   m_ObjectHideFlags: 0
@@ -1209,6 +1257,48 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0000002
   m_Center: {x: 0.054306, y: 0.20858304, z: 0}
+--- !u!114 &1994002983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1994002981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52db84a51f933844aaacc6d42bacc0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 50
+--- !u!114 &1994002984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1994002981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &2069451303
 GameObject:
   m_ObjectHideFlags: 0
