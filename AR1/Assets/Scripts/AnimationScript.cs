@@ -8,7 +8,7 @@ public class AnimationScript : MonoBehaviour {
     //public Animation anim;
     public Animation animat;
     public GameObject bench;
-    public GameObject bike;
+    public GameObject newbike;
     public GameObject BenchText;
     public GameObject BikeText;
     public bool IsTextActiveBike;
@@ -32,13 +32,13 @@ public class AnimationScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        bike.GetComponent<Animation>().Play("bike");
+        newbike.GetComponent<Animation>().Play("newbike");
         bench.GetComponent<Animation>().Play("bench");
     }
 
     public void ShowBike()
     {
-        bike.SetActive(!bike.activeSelf);
+        newbike.SetActive(!newbike.activeSelf);
 
         if (IsTextActiveBike == true)
         {
