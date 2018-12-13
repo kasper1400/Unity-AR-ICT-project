@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342698f0e8c2e0947a0753059d00ac23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GO: {fileID: 188496703}
   viitataan: {fileID: 1332134668}
   arvosana: 1
 --- !u!1 &354058990
@@ -659,6 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342698f0e8c2e0947a0753059d00ac23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GO: {fileID: 871604645}
   viitataan: {fileID: 1332134668}
   arvosana: 5
 --- !u!114 &871604651
@@ -1206,6 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342698f0e8c2e0947a0753059d00ac23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GO: {fileID: 1509725295}
   viitataan: {fileID: 1332134668}
   arvosana: 4
 --- !u!1 &1580365696
@@ -1367,6 +1370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342698f0e8c2e0947a0753059d00ac23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GO: {fileID: 1876241898}
   viitataan: {fileID: 1332134668}
   arvosana: 2
 --- !u!1 &1935191687
@@ -1540,6 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342698f0e8c2e0947a0753059d00ac23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GO: {fileID: 1994002981}
   viitataan: {fileID: 1332134668}
   arvosana: 3
 --- !u!1 &2039297104
