@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class SmileyTapped : MonoBehaviour {
+public class SmileyTapped : MonoBehaviour 
+
+{
     public static bool rated = false;
-	// Use this for initialization
-	void Start () {
-		
-	}
 
-    void sendRating(int rate)
+    public void sendRating(int rate)
     {
         Debug.Log("Aloitetaan taikalähetys");
         // Tarkista ettei ole jo arvosteltu
@@ -42,10 +41,52 @@ public class SmileyTapped : MonoBehaviour {
             Debug.Log(www.error);
         }
     }
+    /*
+    public void FirstBall(PointerEventData evd)
+    {
+        sendRating(1);
+    }
 
-    public void one(){ sendRating(1); }
-    public void two() { sendRating(2); }
-    public void three() { sendRating(3); }
-    public void four() { sendRating(4); }
-    public void five() { sendRating(5); }
+    public void SecondBall(PointerEventData evd)
+    {
+        sendRating(2);
+    }
+
+    public void ThirdBall(PointerEventData evd)
+    {
+        sendRating(3);
+    }
+
+    public void FourthBall(PointerEventData evd)
+    {
+        sendRating(4);
+    }
+
+    public void FifthBall(PointerEventData evd)
+    {
+        sendRating(5);
+    }
+
+*/
+    public void one()
+    {
+        sendRating(1);
+    }
+    public void two()
+    {
+        sendRating(2);
+    }
+    public void three()
+    {
+        sendRating(3);
+    }
+    public void four()
+    {
+        sendRating(4);
+    }
+    public void five()
+    {
+        sendRating(5);
+    }
+    
 }
